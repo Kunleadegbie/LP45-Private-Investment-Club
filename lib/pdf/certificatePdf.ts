@@ -179,7 +179,7 @@ export function generateCertificatePdf(
       },
       {
         label: "Verification",
-        value: "Portal verification placeholder",
+        value: "Electronically generated.",
       },
     ],
     y
@@ -199,6 +199,28 @@ export function generateCertificatePdf(
     160
   );
   doc.text(disclosure, 25, y + 15);
+
+  try {
+    doc.addImage(
+      "/signatures/investment-manager-signature.png",
+      "PNG",
+      25,
+      226,
+      45,
+      16
+    );
+
+    doc.addImage(
+      "/signatures/club-secretary-signature.png",
+      "PNG",
+      115,
+      226,
+      45,
+      16
+    );
+  } catch (error) {
+    console.warn("Certificate signature images could not be added:", error);
+  }
 
   addSignatureBlock(
     doc,
