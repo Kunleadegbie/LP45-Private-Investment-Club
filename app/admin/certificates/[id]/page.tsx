@@ -163,12 +163,12 @@ export default function AdminCertificateDetailPage() {
 
         <button
           onClick={printCertificate}
-          className="rounded-xl bg-emerald-500 px-6 py-3 font-semibold text-slate-950  hover:bg-emerald-400"
+          className="rounded-xl bg-emerald-500 px-6 py-3 font-semibold text-slate-950 hover:bg-emerald-400"
         >
           Print Certificate
         </button>
       </div>
-        
+
       <div className="mx-auto max-w-6xl rounded-[2rem] border border-emerald-500/40 bg-white p-8 text-slate-950 shadow-2xl print:border-4 print:border-emerald-700 print:shadow-none md:p-12">
         <div className="relative overflow-hidden rounded-[1.5rem] border-4 border-emerald-700 p-8 md:p-12">
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.04]">
@@ -329,14 +329,36 @@ export default function AdminCertificateDetailPage() {
 
             <div className="mt-14 grid gap-10 md:grid-cols-3">
               <div>
+                <div className="flex h-20 items-end justify-center">
+                  <img
+                    src="/signatures/investment-manager-signature.png"
+                    alt="Investment Manager Signature"
+                    className="max-h-16 max-w-full object-contain"
+                  />
+                </div>
+
                 <div className="h-px w-full bg-slate-400" />
-                <p className="mt-3 text-sm font-bold">Investment Manager</p>
+
+                <p className="mt-2 text-sm font-bold">
+                  {settings?.investment_manager_name || "Investment Manager"}
+                </p>
                 <p className="text-xs text-slate-500">Authorized Signature</p>
               </div>
 
               <div>
+                <div className="flex h-20 items-end justify-center">
+                  <img
+                    src="/signatures/club-secretary-signature.png"
+                    alt="Club Secretary Signature"
+                    className="max-h-16 max-w-full object-contain"
+                  />
+                </div>
+
                 <div className="h-px w-full bg-slate-400" />
-                <p className="mt-3 text-sm font-bold">Club Secretary</p>
+
+                <p className="mt-2 text-sm font-bold">
+                  {settings?.club_secretary_name || "Club Secretary"}
+                </p>
                 <p className="text-xs text-slate-500">Authorized Signature</p>
               </div>
 
