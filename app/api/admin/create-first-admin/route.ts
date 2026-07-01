@@ -8,8 +8,8 @@ const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey);
 
 export async function POST() {
   try {
-    const email = "chumcred@gmail.com";
-    const password = "Admin@1234";
+    const email = process.env.FIRST_ADMIN_EMAIL!;
+    const password = process.env.FIRST_ADMIN_PASSWORD!;
 
     const { data: authData, error: authError } =
       await supabaseAdmin.auth.admin.createUser({
