@@ -90,14 +90,31 @@ export const adminNavigation: NavItem[] = [
   },
 ];
 
+export function normalizeAdminRole(value: any) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .replaceAll(" ", "_")
+    .replaceAll("-", "_");
+}
+
+export function normalizePermissions(value: any) {
+  if (!value || typeof value !== "object") return {};
+  return value;
+}
+
+export function isSuperAdmin(profile: any) {
+  return normalizeAdminRole(profile?.admin_role) === "super_admin";
+}
+
 export function filterAdminNavigation(profile: any) {
   if (!profile) return [];
 
-  if (profile.admin_role === "super_admin") {
+  if (isSuperAdmin(profile)) {
     return adminNavigation;
   }
 
-  const permissions = profile.permissions || {};
+  const permissions = normalizePermissions(profile.permissions);
 
   return adminNavigation.filter((item) => {
     if (item.superAdminOnly) return false;
